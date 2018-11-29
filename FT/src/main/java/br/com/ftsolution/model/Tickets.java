@@ -21,6 +21,7 @@ public class Tickets {
     private int status;
     private int analista;
     private Date dataAlteracao;
+    private int usuario;
    
     
     
@@ -28,12 +29,13 @@ public class Tickets {
         
     }
     
-    public Tickets(String titulo,String descricao,int status,int analista,Date dataAlteracao){
+    public Tickets(String titulo,String descricao,int status,int analista,Date dataAlteracao,int usuario){
         this.titulo=titulo;
         this.descricao=descricao;
         this.status=status;
         this.analista=analista;
         this.dataAlteracao=dataAlteracao;
+        this.usuario=usuario;
         
     }
     public int getId() {
@@ -90,6 +92,14 @@ public class Tickets {
 
     public void setDataIngresso(Date dataIngresso) {
         this.dataIngresso = dataIngresso;
+    }
+    
+      public int getUsuario() {
+        return usuario;
+    }
+    
+    public void setUsuario(int usuario) {
+        this.usuario = usuario;
     }
 
 }

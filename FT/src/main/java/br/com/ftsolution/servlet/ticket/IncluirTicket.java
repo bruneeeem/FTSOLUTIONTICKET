@@ -47,9 +47,11 @@ public class IncluirTicket extends HttpServlet{
         String statusStr = request.getParameter("status");
         String dataAlteracaoStr = request.getParameter("dataAlteracao");
         String analistaStr = request.getParameter("analista");
+        String usuarioStr = request.getParameter("usuario");
         
         int status = Integer.parseInt(statusStr);
         int analista = Integer.parseInt(analistaStr);
+        int usuario = Integer.parseInt(usuarioStr);
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         java.sql.Date data = null;
         
@@ -60,7 +62,7 @@ public class IncluirTicket extends HttpServlet{
          } catch (ParseException ex) {
              Logger.getLogger(IncluirTicket.class.getName()).log(Level.SEVERE, null, ex);
          }
-            Tickets ticket = new Tickets(titulo,descricao,status,analista,data);
+            Tickets ticket = new Tickets(titulo,descricao,status,analista,data,usuario);
     
          try {
           

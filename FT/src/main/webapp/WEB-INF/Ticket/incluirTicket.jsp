@@ -38,6 +38,10 @@
                          <div class="col-sm-5">
                              <input style="width: 300px;" required="required" type="text" name="analista" />
                         </div>
+                        <label class="col-sm-2 col-form-label" for="usuario">Usuario</label>                
+                         <div class="col-sm-5">
+                             <input style="width: 300px;" required="required" type="text" name="usuario" />
+                        </div>
                       
                         <button type="submit">Salvar</button>
                          <button type="reset">Limpar</button>
