@@ -5,10 +5,22 @@
  */
 package br.com.ftsolution.dao;
 
+import br.com.ftsolution.model.Tickets;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 /**
  *
  * @author Produto019
  */
 public class EmpresaDAO {
     
+    Connection conexao;
+    
+            public EmpresaDAO(Connection conexao) {
+        
+            this.conexao = conexao;
+    
+    }
 }
