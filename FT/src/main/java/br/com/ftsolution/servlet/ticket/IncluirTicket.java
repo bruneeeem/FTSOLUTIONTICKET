@@ -52,24 +52,25 @@ public class IncluirTicket extends HttpServlet{
         int analista = Integer.parseInt(analistaStr);
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         java.sql.Date data = null;
+        
+        
          try {
              //Date dataAlteracao =  formato.parse(dataAlteracaoStr);
              data = new java.sql.Date(formato.parse(dataAlteracaoStr).getTime());
          } catch (ParseException ex) {
              Logger.getLogger(IncluirTicket.class.getName()).log(Level.SEVERE, null, ex);
          }
-        
-          Tickets ticket = new Tickets(titulo,descricao,status,analista,data);
+            Tickets ticket = new Tickets(titulo,descricao,status,analista,data);
     
          try {
           
              TicketsDAO.inserirTicket(ticket);
 
         } catch (Exception e) {
+            
         }
          
            request.setAttribute("ticket", ticket);
-           
            RequestDispatcher dispatcher
                 = request.getRequestDispatcher(
                         "WEB-INF/Ticket/incluirTicket.jsp");

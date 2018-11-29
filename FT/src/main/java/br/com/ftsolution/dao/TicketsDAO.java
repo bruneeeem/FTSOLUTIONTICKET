@@ -31,7 +31,7 @@ public class TicketsDAO {
         Class.forName("com.mysql.jdbc.Driver");
         
         conn = DriverManager.getConnection(
-                "jdbc:mysql://186.202.28.235/ftstectickets.mysql.dbaas.com.br",
+                "jdbc:mysql://ftstectickets.mysql.dbaas.com.br:3306/ftstectickets?zeroDateTimeBehavior=convertToNull",
                 "ftstectickets",
                 "FTserv2310!");
         return  conn;
@@ -40,8 +40,8 @@ public class TicketsDAO {
          public static void inserirTicket(Tickets ticket) throws SQLException, Exception {
          
          String sqlInserir =
-            "INSERT INTO Ticket(titulo,descricao,dataIngresso,status,dataAlteracao,analista)"
-            + " VALUES (?,?,NOW(),?,?,?)";
+            "INSERT INTO Ticket(titulo,descricao,status,dataAlteracao,analista)"
+            + " VALUES (?,?,?,?,?)";
          
              Connection connection = null;
              
