@@ -83,7 +83,7 @@ public class AlterarTicket extends HttpServlet{
             ticket.setId(id);
          try {
           
-             TicketsDAO.inserirTicket(ticket);
+             TicketsDAO.alterar(ticket);
 
         } catch (Exception e) {
             
