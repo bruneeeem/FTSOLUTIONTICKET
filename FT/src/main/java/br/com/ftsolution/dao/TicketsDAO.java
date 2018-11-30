@@ -9,6 +9,7 @@ import br.com.ftsolution.model.Tickets;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -75,4 +76,100 @@ public class TicketsDAO {
   
          }
          }
+         
+          public static Tickets PesquisarrTicket(Integer idEntidade) throws SQLException, Exception {
+         
+             String sqlConsultar = " SELECT * FROM Ticket WHERE id = ?";         
+             
+              Connection connection = null;
+              
+               PreparedStatement preparedStatement = null;
+             
+               ResultSet result = null;
+               try {
+                   
+                   connection = obterConexao();
+            
+                preparedStatement = connection.prepareStatement(sqlConsultar);
+
+                preparedStatement.setInt(1, idEntidade);
+                
+                result = preparedStatement.executeQuery();
+                
+                if(result.next()){
+                    
+                    Tickets ticket = new Tickets();
+                    ticket.setId(result.getInt("id"));
+                    ticket.setTitulo(result.getString("titulo"));
+                    ticket.setDescricao(result.getString("descricao"));
+                    ticket.setDataIngresso(result.getDate("dataIngresso"));
+                    ticket.setStatus(result.getInt("status"));
+                    ticket.setDataAlteracao(result.getDate("dataAlteracao"));
+                    ticket.setAnalista(result.getInt("analista"));
+                    ticket.setUsuario(result.getInt("usuario"));
+                    
+                    return ticket;
+                }
+                    
+               }finally {
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+                return null;
+          }
+        public static void alterar(Tickets ticket) throws SQLException, Exception{
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = obterConexao();
+            String sql = "UPDATE Ticket "
+                + " SET titulo = ?, descricao = ?, dataIngresso = ?, status= ?, dataAlteracao= ?,"
+                + " analista = ?, usuario = ?"
+                + " WHERE id = ?";
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            //Configura os parâmetros do "PreparedStatement"
+            //Comando do banco            
+
+             
+            //Setando valores
+            
+            preparedStatement.setString(1, ticket.getTitulo());
+            preparedStatement.setString(2, ticket.getDescricao());
+            preparedStatement.setDate(3, ticket.getDataIngresso());
+            preparedStatement.setDouble(4,ticket.getStatus());
+            preparedStatement.setDate(5, ticket.getDataAlteracao());
+            preparedStatement.setInt(6, ticket.getAnalista());
+            preparedStatement.setInt(7,ticket.getUsuario() );           
+            preparedStatement.setInt(8,ticket.getId());
+            
+            preparedStatement.executeUpdate();
+            
+        } finally {
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+          }
+          
+          
 }
