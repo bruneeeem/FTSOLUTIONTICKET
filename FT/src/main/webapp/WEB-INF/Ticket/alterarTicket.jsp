@@ -46,7 +46,7 @@
                                 </div>        
                             </div>
                                      <button type="submit" onClick="confirmationUpdate()">Salvar</button>
-                                      <button type="reset">Limpar</button>
+                                     <button type="reset">Limpar</button>
                                      <button type="button" onclick="window.location.href = 'menu.jsp';">Voltar</button>
         </form>
     </body>

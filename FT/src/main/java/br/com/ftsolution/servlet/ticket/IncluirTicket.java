@@ -45,28 +45,17 @@ public class IncluirTicket extends HttpServlet{
         String titulo = request.getParameter("titulo");
         String descricao = request.getParameter("descricao");
         String statusStr = request.getParameter("status");
-        String dataAlteracaoStr = request.getParameter("dataAlteracao");
         String analistaStr = request.getParameter("analista");
         String usuarioStr = request.getParameter("usuario");
         
         int status = Integer.parseInt(statusStr);
         int analista = Integer.parseInt(analistaStr);
         int usuario = Integer.parseInt(usuarioStr);
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         java.sql.Date data = null;
-        
-        
+       
+        Tickets ticket = new Tickets(titulo,descricao,status,analista,data,usuario);
          try {
-             //Date dataAlteracao =  formato.parse(dataAlteracaoStr);
-             data = new java.sql.Date(formato.parse(dataAlteracaoStr).getTime());
-         } catch (ParseException ex) {
-             Logger.getLogger(IncluirTicket.class.getName()).log(Level.SEVERE, null, ex);
-         }
-            Tickets ticket = new Tickets(titulo,descricao,status,analista,data,usuario);
-    
-         try {
-          
-             TicketsDAO.inserirTicket(ticket);
+            TicketsDAO.inserirTicket(ticket);
 
         } catch (Exception e) {
             

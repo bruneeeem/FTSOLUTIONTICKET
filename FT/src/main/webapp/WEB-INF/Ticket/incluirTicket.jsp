@@ -30,10 +30,6 @@
                          <div class="col-sm-5">
                              <input style="width: 300px;" required="required" type="text" name="status" />
                         </div>
-                       <label class="col-sm-2 col-form-label" for="dataAlteracao">Data de alteracão</label>                
-                         <div class="col-sm-5">
-                             <input style="width: 300px;" required="required" type="text" name="dataAlteracao"/>
-                        </div>
                         <label class="col-sm-2 col-form-label" for="analista">Analista</label>                
                          <div class="col-sm-5">
                              <input style="width: 300px;" required="required" type="text" name="analista" />
@@ -44,7 +40,8 @@
                         </div>
                       
                         <button type="submit">Salvar</button>
-                         <button type="reset">Limpar</button>
+                        <button type="reset">Limpar</button>
+                        <button type="button" onclick="window.location.href = 'menu.jsp';">Voltar</button>
                 </form>
     </body>
 </html>

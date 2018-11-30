@@ -41,8 +41,8 @@ public class TicketsDAO {
          public static void inserirTicket(Tickets ticket) throws SQLException, Exception {
          
          String sqlInserir =
-            "INSERT INTO Ticket(titulo,descricao,status,dataAlteracao,analista,usuario)"
-            + " VALUES (?,?,?,?,?,?)";
+            "INSERT INTO Ticket(titulo,descricao,status,analista,usuario)"
+            + " VALUES (?,?,?,?,?)";
          
              Connection connection = null;
              
@@ -58,9 +58,8 @@ public class TicketsDAO {
                 preparedStatement.setString(1, ticket.getTitulo());
                 preparedStatement.setString(2, ticket.getDescricao());
                 preparedStatement.setInt(3, ticket.getStatus());
-                preparedStatement.setDate(4, ticket.getDataAlteracao());
-                preparedStatement.setInt(5, ticket.getAnalista());
-                preparedStatement.setInt(6, ticket.getUsuario());
+                preparedStatement.setInt(4, ticket.getAnalista());
+                preparedStatement.setInt(5, ticket.getUsuario());
                 
                 preparedStatement.execute();         
                 
@@ -137,7 +136,7 @@ public class TicketsDAO {
             //Abre uma conexão com o banco de dados
             connection = obterConexao();
             String sql = "UPDATE Ticket "
-                + " SET titulo = ?, descricao = ?, dataIngresso = ?, status= ?, dataAlteracao= ?,"
+                + " SET titulo = ?, descricao = ?, status= ?, dataAlteracao= ?,"
                 + " analista = ?, usuario = ?"
                 + " WHERE id = ?";
             //Cria um statement para execução de instruções SQL
@@ -150,12 +149,11 @@ public class TicketsDAO {
             
             preparedStatement.setString(1, ticket.getTitulo());
             preparedStatement.setString(2, ticket.getDescricao());
-            preparedStatement.setDate(3, ticket.getDataIngresso());
-            preparedStatement.setDouble(4,ticket.getStatus());
-            preparedStatement.setDate(5, ticket.getDataAlteracao());
-            preparedStatement.setInt(6, ticket.getAnalista());
-            preparedStatement.setInt(7,ticket.getUsuario() );           
-            preparedStatement.setInt(8,ticket.getId());
+            preparedStatement.setInt(3,ticket.getStatus());
+            preparedStatement.setDate(4, ticket.getDataAlteracao());
+            preparedStatement.setInt(5, ticket.getAnalista());
+            preparedStatement.setInt(6,ticket.getUsuario() );           
+            preparedStatement.setInt(7,ticket.getId());
             
             preparedStatement.executeUpdate();
             
