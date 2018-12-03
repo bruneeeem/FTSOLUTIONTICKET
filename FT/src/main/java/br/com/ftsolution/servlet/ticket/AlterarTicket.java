@@ -35,10 +35,10 @@ public class AlterarTicket extends HttpServlet{
         
         int id = Integer.parseInt(request.getParameter("id"));
         
-        
         Tickets ticket = null;
+        TicketsDAO ticketDAO = new TicketsDAO();
         try {
-            ticket = TicketsDAO.PesquisarrTicket(id);
+           ticket = ticketDAO.pesquisar(id);
             
         } catch (Exception e) {
              e.printStackTrace();
@@ -81,9 +81,10 @@ public class AlterarTicket extends HttpServlet{
          }
             Tickets ticket = new Tickets(titulo,descricao,status,analista,data,usuario);
             ticket.setId(id);
+            TicketsDAO ticketDAO = new TicketsDAO();
          try {
           
-             TicketsDAO.alterar(ticket);
+             ticketDAO.alterar(ticket);
 
         } catch (Exception e) {
             

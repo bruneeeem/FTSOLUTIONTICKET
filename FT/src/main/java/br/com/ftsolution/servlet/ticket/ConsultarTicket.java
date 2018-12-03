@@ -40,11 +40,11 @@ public class ConsultarTicket extends HttpServlet{
             throws ServletException, IOException {
 
         int id = Integer.parseInt(request.getParameter("id"));
-         
+        TicketsDAO ticketDAO = new TicketsDAO();
         Tickets ticket = null;
         try {
          
-                ticket = TicketsDAO.PesquisarrTicket(id);
+            ticket = ticketDAO.pesquisar(id);
 
         } catch (Exception e) {
         }

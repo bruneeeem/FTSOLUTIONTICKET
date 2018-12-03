@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.ftsolution.dao;
 
+import br.com.ftsolution.crudSistema.crudSistema;
 import br.com.ftsolution.model.Tickets;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author Bruno
  */
-public class TicketsDAO {
+public class TicketsDAO implements crudSistema<Tickets>{
     
             Connection conexao;
     
@@ -38,8 +35,14 @@ public class TicketsDAO {
         return  conn;
     
  }
-         public static void inserirTicket(Tickets ticket) throws SQLException, Exception {
-         
+
+    public TicketsDAO() {
+        
+    }
+       
+        @Override
+        public void cadastrar(Tickets ticket) throws SQLException, Exception {
+                               
          String sqlInserir =
             "INSERT INTO Ticket(titulo,descricao,status,analista,usuario)"
             + " VALUES (?,?,?,?,?)";
@@ -73,12 +76,14 @@ public class TicketsDAO {
                 connection.close();
             }
   
-         }
-         }
+         }       
+ }
+
          
-          public static Tickets PesquisarrTicket(Integer idEntidade) throws SQLException, Exception {
-         
-             String sqlConsultar = " SELECT * FROM Ticket WHERE id = ?";         
+         @Override
+         public Tickets pesquisar(Integer id) throws SQLException, Exception {
+             
+              String sqlConsultar = " SELECT * FROM Ticket WHERE id = ?";         
              
               Connection connection = null;
               
@@ -91,7 +96,7 @@ public class TicketsDAO {
             
                 preparedStatement = connection.prepareStatement(sqlConsultar);
 
-                preparedStatement.setInt(1, idEntidade);
+                preparedStatement.setInt(1, id);
                 
                 result = preparedStatement.executeQuery();
                 
@@ -124,11 +129,15 @@ public class TicketsDAO {
                 connection.close();
             }
         }
-                return null;
-          }
-        public static void alterar(Tickets ticket) throws SQLException, Exception{
-        //Conexão para abertura e fechamento
-        Connection connection = null;
+                return null;   
+    
+        }
+          
+          
+         @Override
+        public void alterar(Tickets ticket) throws SQLException, Exception {
+                
+                Connection connection = null;
         //Statement para obtenção através da conexão, execução de
         //comandos SQL e fechamentos
         PreparedStatement preparedStatement = null;
@@ -167,7 +176,6 @@ public class TicketsDAO {
                 connection.close();
             }
         }
-          }
-          
-          
+    }
+             
 }

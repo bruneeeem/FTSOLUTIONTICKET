@@ -54,8 +54,10 @@ public class IncluirTicket extends HttpServlet{
         java.sql.Date data = null;
        
         Tickets ticket = new Tickets(titulo,descricao,status,analista,data,usuario);
+        TicketsDAO ticketDAO = new TicketsDAO();
          try {
-            TicketsDAO.inserirTicket(ticket);
+             
+            ticketDAO.cadastrar(ticket);
 
         } catch (Exception e) {
             
