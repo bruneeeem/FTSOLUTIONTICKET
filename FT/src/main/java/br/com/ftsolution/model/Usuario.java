@@ -20,9 +20,8 @@ public class Usuario {
         this.senha = senha;
     }
     
-    public Usuario(String login, Long idPessoa, String senha, String status) {
+    public Usuario(String login,String senha, String status) {
         this.login = login;
-        this.idPessoa = idPessoa;
         this.senha = senha;
         this.status = status;
     }

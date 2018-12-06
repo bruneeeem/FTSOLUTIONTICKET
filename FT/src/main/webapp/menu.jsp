@@ -14,7 +14,8 @@
             <ul class="menu">
                 <li><a href="#">Cadastros</a>
                     <ul>
-                        <li><a href="./IncluirTicket">Ticket</a></li>                      
+                        <li><a href="./IncluirTicket">Ticket</a></li> 
+                        <li><a href="./IncluirPessoa">Pessoa</a></li> 
 
                     </ul>
                 </li>

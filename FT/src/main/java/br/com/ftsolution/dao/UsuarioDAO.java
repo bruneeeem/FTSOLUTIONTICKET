@@ -35,8 +35,7 @@ public class UsuarioDAO {
         return conn;
     }
 
-    
-
+   
 
     public static Usuario verificar(Usuario usuario) throws SQLException, Exception {
         

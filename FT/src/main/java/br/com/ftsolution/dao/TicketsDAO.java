@@ -137,7 +137,7 @@ public class TicketsDAO implements crudSistema<Tickets>{
          @Override
         public void alterar(Tickets ticket) throws SQLException, Exception {
                 
-                Connection connection = null;
+        Connection connection = null;
         //Statement para obtenção através da conexão, execução de
         //comandos SQL e fechamentos
         PreparedStatement preparedStatement = null;
