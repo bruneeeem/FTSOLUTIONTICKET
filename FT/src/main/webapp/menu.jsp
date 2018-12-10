@@ -22,6 +22,7 @@
                 <li><a href="#">Pesquisar</a>
                     <ul>
                         <li><a href="./ConsultarTicket">Ticket</a></li>
+                         <li><a href="./ConsultarPessoa">Pessoa</a></li>
 
                     </ul>
                 </li>

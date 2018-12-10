@@ -57,7 +57,7 @@ public class PessoaDAO implements crudSistema<Pessoa> {
             //Abre uma conexão com o banco de dados
             connection = obterConexao();
             String sql = "UPDATE Pessoa "
-                + " SET nome = ?, cpf = ?, o email= ?, status= ?,"
+                + " SET nome = ?, cpf = ?, email= ?, status= ?"
                 + " WHERE idPessoa = ?";
             //Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
@@ -91,7 +91,7 @@ public class PessoaDAO implements crudSistema<Pessoa> {
     public void cadastrar(Pessoa pessoa) throws SQLException, Exception {
         
          String sqlInserir =
-            "INSERT INTO Pessoa(nome,cpf,o email,status)"
+            "INSERT INTO Pessoa(nome,cpf,email,status)"
             + " VALUES (?,?,?,?)";
           
                Connection connection = null;
@@ -149,7 +149,7 @@ public class PessoaDAO implements crudSistema<Pessoa> {
                     pessoa.setIdPessoa(result.getInt("idPessoa"));
                     pessoa.setNome(result.getString("nome"));
                     pessoa.setCpf(result.getString("cpf"));
-                    pessoa.setEmail(result.getString("o email"));
+                    pessoa.setEmail(result.getString("email"));
                     pessoa.setStatus(result.getInt("status"));
                  
                     return pessoa;

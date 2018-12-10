@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : consultarTicket
     Created on : 30/11/2018, 09:41:06
@@ -9,13 +10,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consultar Ticket</title>
+        <title>Consultar Pessoa</title>
     </head>
     <body>
-        <h1>Consultar Ticket</h1>
+        <h1>Consultar Pessoa</h1>
                             <div class="centralizarLogin">
-                             <form  method="post" action="${pageContext.request.contextPath}/ConsultarTicket">
-                                 <label>ID ENTIDADE:&nbsp;&nbsp;<input required="required" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode)))
+                             <form  method="post" action="${pageContext.request.contextPath}/ConsultarPessoa">
+                                 <label>ID PESSOA:&nbsp;&nbsp;<input required="required" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode)))
                                        return true;
                                     else
                                        return false;" style="width: 50%;" type="text" name="id" id="id"/></label>
